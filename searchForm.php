@@ -55,7 +55,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knihovna v PHP</title>
+    <title>Advanced Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/records.css">
@@ -130,12 +130,13 @@
                     if(isset($_POST['sort'])) {
                         $sort = mysqli_real_escape_string($con ,$_POST["sort"]);
                     }                        
-                    // ulozeni mysql prikazu(dotazu) do promenne
+                    // Sql query 
                     $sql = "SELECT * FROM books WHERE 
                     ((author_name = '$author' OR author_surname = '$author' OR middle_name = '$author') AND genre = '$genre' AND book_title = '$title') OR
                     ((author_name = '$author' OR author_surname = '$author' OR middle_name = '$author') AND book_title = '$title') OR
                     (author_name = '$author' OR author_surname = '$author') OR (book_title = '$title' AND genre = '$genre') OR ISBN = '$ISBN' OR  genre = '$genre'
-                    ORDER BY "; 
+                    ORDER BY ";
+                    // Order By switch statement 
                     switch ($sort)
                     {
                         case 'yAsc': { $sql .= "publication_year"; break; }
@@ -147,8 +148,6 @@
                         default: { $sql .= "book_id"; break; } // By default, let's sort by ID
                     }
 
-
-                    //pokud dotaz selze, nelze provest
                     $result = mysqli_query($con, $sql);
                     if (!($result)) {
                         die("Request cannot be completed.</body></html>");
@@ -162,10 +161,6 @@
                                 <p class="my-auto p-2">Search results</p>
                             </div>
                         </div>
-
-                        <!-- <div class="row ">
-                            <p class='text-center fs-5 my-auto mt-4'>Showing results from total <?php echo $result->num_rows; ?></p>
-                        </div> -->
                     
                         <?php
                         while ($row = mysqli_fetch_array($result)) : 
