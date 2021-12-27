@@ -1,10 +1,10 @@
 # Basic Library System
 
-A simple library system that keeps records of books inside a library, users can insert the new book, see all records or search for a specific book based on multiple criteria.
+A simple library system that keeps records of books in database, users can insert the new book, see all records or search for a specific book based on multiple criteria.
 Mobile & tablet responsive thanks to BS framework.
 
 Made with
-- PHP - server side validation + Mysql db communication
+- PHP + MySql - server side validation , data keeping
 - JS ( Jquery ) - client side validation and async 
 - HTML5 ( Bootstrap )
 
