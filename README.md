@@ -5,7 +5,7 @@ Mobile & tablet responsive thanks to BS framework.
 
 Made with
 - PHP + MySql - server side validation , data keeping
-- JS ( Jquery ) - client side validation and async 
+- JS ( Jquery ) - client side validation
 - HTML5 ( Bootstrap )
 
 
